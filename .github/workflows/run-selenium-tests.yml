@@ -38,10 +38,16 @@ jobs:
         echo "CHROME_BIN=/usr/bin/chromium-browser" >> $GITHUB_ENV
         echo "CHROMEDRIVER=/usr/bin/chromedriver" >> $GITHUB_ENV
 
-    - name: Start MVC app
+    - name: Wait for app to be ready
       run: |
-        dotnet run --project ./TestAutomationPOCSite/TestAutomationPOCSite.csproj --urls "https://localhost:44354" &
-        sleep 10  # Wait for the app to start
+        for i in {1..30}; do
+          if curl -k --silent https://localhost:44354/ | grep -q "<form"; then
+            echo "App is ready!"
+            break
+          fi
+          echo "Waiting for app..."
+          sleep 2
+        done
 
     - name: Run Selenium Tests
       run: dotnet test ./TestAutomationPOCSite/TestAutomationPOCSite.sln --configuration Release --logger "console;verbosity=normal"

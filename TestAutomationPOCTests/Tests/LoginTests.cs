@@ -32,7 +32,11 @@ namespace TestAutomationPOCTests.Tests
 
             Assert.IsTrue(_driver.PageSource.Contains("Welcome to the Dashboard"));
             Assert.IsTrue(_driver.PageSource.Contains("You are successfully logged in!"));
-            System.Threading.Thread.Sleep(5000); 
+            System.Threading.Thread.Sleep(5000);
+
+            // After navigation, before finding the element
+            System.IO.File.WriteAllText("page.html", _driver.PageSource);
+            ((ITakesScreenshot)_driver).GetScreenshot().SaveAsFile("screenshot.png");
         }
 
         [Test]
@@ -51,6 +55,10 @@ namespace TestAutomationPOCTests.Tests
             System.Threading.Thread.Sleep(2000);
 
             Assert.IsTrue(_loginPage.GetErrorMessage().Contains("Invalid username or password."));
+
+            // After navigation, before finding the element
+            System.IO.File.WriteAllText("page.html", _driver.PageSource);
+            ((ITakesScreenshot)_driver).GetScreenshot().SaveAsFile("screenshot.png");
         }
 
         [TearDown]
