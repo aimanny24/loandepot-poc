@@ -22,17 +22,21 @@ jobs:
           9.0.x
 
     - name: Install dependencies
-      run: dotnet restore
+      run: dotnet restore ./loandepot-poc.sln
 
     - name: Build the solution
-      run: dotnet build --configuration Release
+      run: dotnet build ./loandepot-poc.sln --configuration Release
+
 
     - name: Install Chromium
       run: |
         sudo apt update
         sudo apt install -y chromium-browser
 
-    - name: Run Selenium Tests
+    - name: Set CHROME_BIN and CHROMEDRIVER
       run: |
-        export CHROME_BIN=/usr/bin/chromium-browser
-        dotnet test --configuration Release --logger "console;verbosity=normal"
+        echo "CHROME_BIN=/usr/bin/chromium-browser" >> $GITHUB_ENV
+        echo "CHROMEDRIVER=/usr/bin/chromedriver" >> $GITHUB_ENV
+
+    - name: Run Selenium Tests
+      run: dotnet test ./loandepot-poc.sln --configuration Release --logger "console;verbosity=normal"
