@@ -9,6 +9,9 @@ namespace TestAutomationPOCTests.Drivers
         {
             var options = new ChromeOptions();
             options.AddArgument("--start-maximized");
+            options.AddArgument("--headless=new"); // or "--headless"
+            options.AddArgument("--no-sandbox");
+            options.AddArgument("--disable-dev-shm-usage");
             return new ChromeDriver(options);
         }
     }
