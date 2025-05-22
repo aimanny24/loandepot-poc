@@ -1,0 +1,16 @@
+# ASP.NET / Visual Studio
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vscode/
+.vs/
+.DS_Store
+*.dbmdl
+*.pdb
+*.mdb
+*.cache
+*.log
+TestResults/
