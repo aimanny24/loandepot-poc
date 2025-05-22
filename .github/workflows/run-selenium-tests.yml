@@ -38,6 +38,11 @@ jobs:
         echo "CHROME_BIN=/usr/bin/chromium-browser" >> $GITHUB_ENV
         echo "CHROMEDRIVER=/usr/bin/chromedriver" >> $GITHUB_ENV
 
+    - name: Start MVC app
+      run: |
+        dotnet run --project ./TestAutomationPOCSite/TestAutomationPOCSite.csproj --urls "https://localhost:44354" &
+        sleep 5
+        
     - name: Wait for app to be ready
       run: |
         for i in {1..30}; do
