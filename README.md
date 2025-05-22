@@ -1,4 +1,4 @@
-# LoanDepot POC
+# ASP.NET Core MVC & Sel Automation POC
 
 This is a Proof of Concept automation project using:
 
