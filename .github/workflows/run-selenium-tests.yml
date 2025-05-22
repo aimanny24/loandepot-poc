@@ -56,3 +56,15 @@ jobs:
 
     - name: Run Selenium Tests
       run: dotnet test ./TestAutomationPOCSite/TestAutomationPOCSite.sln --configuration Release --logger "console;verbosity=normal"
+
+    - name: Upload test artifacts
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: selenium-artifacts
+        path: |
+          page.html
+          screenshot.png
+
+    - name: Output login page HTML
+      run: curl -k https://localhost:44354/

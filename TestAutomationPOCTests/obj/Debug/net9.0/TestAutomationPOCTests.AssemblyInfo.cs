@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TestAutomationPOCTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7a73d6428f2fbb31f269f8ee80fe8fdca778ed96")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+96daa8e6c1653cf86ca689f90aff5a8a18925558")]
 [assembly: System.Reflection.AssemblyProductAttribute("TestAutomationPOCTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TestAutomationPOCTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

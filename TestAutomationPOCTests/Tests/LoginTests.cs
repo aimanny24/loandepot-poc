@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using TestAutomationPOCTests.Drivers;
 using TestAutomationPOCTests.Pages;
 
@@ -20,7 +21,11 @@ namespace TestAutomationPOCTests.Tests
         public void Login_WithValidCredentials_ShouldNavigateToDashboard()
         {
             _loginPage.NavigateTo("https://localhost:44354"); // change port if different
-            System.Threading.Thread.Sleep(2000); 
+            System.Threading.Thread.Sleep(2000);
+
+            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
+            wait.Until(driver => driver.FindElement(By.Name("username")));
+
             _loginPage.EnterUsername("admin");
             System.Threading.Thread.Sleep(2000); 
 
