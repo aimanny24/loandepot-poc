@@ -22,10 +22,10 @@ jobs:
           9.0.x
 
     - name: Install dependencies
-      run: dotnet restore ./loandepot-poc.sln
+      run: dotnet restore ./TestAutomationPOCSite/TestAutomationPOCSite.sln
 
     - name: Build the solution
-      run: dotnet build ./loandepot-poc.sln --configuration Release
+      run: dotnet build ./TestAutomationPOCSite/TestAutomationPOCSite.sln --configuration Release
 
 
     - name: Install Chromium
@@ -39,4 +39,4 @@ jobs:
         echo "CHROMEDRIVER=/usr/bin/chromedriver" >> $GITHUB_ENV
 
     - name: Run Selenium Tests
-      run: dotnet test ./loandepot-poc.sln --configuration Release --logger "console;verbosity=normal"
+      run: dotnet test ./TestAutomationPOCSite/TestAutomationPOCSite.sln --configuration Release --logger "console;verbosity=normal"
